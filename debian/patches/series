@@ -1,1 +1,2 @@
 000-method-without-context-in-google-provider.patch
+001-update-expected-error-in-jwt-session-test.patch
