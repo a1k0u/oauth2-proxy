@@ -1,0 +1,22 @@
+From: Alexey Kosenko <leshakosenko9@gmail.com>
+Date: Feb, 20 2026 18:29:42 +0300
+Subject: [PATCH] use method without context for google provider (GCE)
+
+The golang-google-cloud-compute-metadata-dev package has old version of the code
+that does not implement the metadata.EmailWithContext function,
+which is used to receive email for the service account in the GCE environment.
+
+This patch can be easily removed after bug #991942 is fixed.
+
+---
+--- oauth2-proxy-7.14.2.orig/providers/google.go
++++ oauth2-proxy-7.14.2/providers/google.go
+@@ -399,7 +399,7 @@ func getTargetPrincipal(ctx context.Cont
+ 	case content["client_email"] != nil:
+ 		targetPrincipal = fmt.Sprintf("%v", content["client_email"])
+ 	case metadata.OnGCE():
+-		targetPrincipal, err = metadata.EmailWithContext(ctx, "")
++		targetPrincipal, err = metadata.Email("")
+ 		if err != nil {
+ 			logger.Fatal("error while calling the GCE metadata server", err)
+ 		}
