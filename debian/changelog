@@ -1,5 +1,5 @@
 oauth2-proxy (7.14.2-1) UNRELEASED; urgency=medium
 
-  * Initial release (Closes: TODO)
+  * Initial release (Closes: #982891)
 
  -- Alexey Kosenko <leshakosenko9@gmail.com>  Fri, 13 Feb 2026 00:33:33 +0300

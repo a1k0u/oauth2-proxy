@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://github.com/oauth2-proxy/oauth2-proxy
 Upstream-Name: oauth2-proxy
-Upstream-Contact: TODO
+Upstream-Contact: joel@oauth2-proxy.dev
 
 Files: *
 Copyright: 2017 OAuth2 Proxy

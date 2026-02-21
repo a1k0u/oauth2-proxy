@@ -1,5 +1,7 @@
 #!/usr/bin/make -f
 
+export DH_GOLANG_INSTALL_EXTRA := static pkg/app/pagewriter pkg/authentication/basic/test
+
 %:
 	dh $@ --builddirectory=debian/_build --buildsystem=golang
 
