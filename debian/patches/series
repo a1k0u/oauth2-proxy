@@ -1,2 +1,3 @@
 000-method-without-context-in-google-provider.patch
 001-update-expected-error-in-jwt-session-test.patch
+002-fix-error-description-in-mapstructure.patch
