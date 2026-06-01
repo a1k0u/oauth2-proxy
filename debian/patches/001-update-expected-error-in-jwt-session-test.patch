@@ -1,0 +1,30 @@
+From: Alexey Kosenko <leshakosenko9@gmail.com>
+Date: Feb, 20 2026 18:52:07 +0300
+Subject: [PATCH] update expected error message in jwt_session_test.go
+
+There is another error message in the current version of golang-github-coreos-go-oidc-v3-dev package.
+But this update also lacks EdDSA support, which is available in the latest upstream version.
+
+This patch can be easily removed after the upstream version of the package is updated.
+
+---
+--- oauth2-proxy-7.14.2.orig/pkg/middleware/jwt_session_test.go
++++ oauth2-proxy-7.14.2/pkg/middleware/jwt_session_test.go
+@@ -304,7 +304,7 @@ Nnc3a3lGVWFCNUMxQnNJcnJMTWxka1dFaHluYmI4
+ 				authorizationHeader: fmt.Sprintf("Bearer %s", nonVerifiedToken),
+ 				expectedErr: k8serrors.NewAggregate([]error{
+ 					errors.New("unable to verify bearer token"),
+-					errors.New("oidc: malformed jwt: illegal base64 data at input byte 8"),
++					errors.New("oidc: malformed jwt: oidc: malformed jwt payload: illegal base64 data at input byte 8"),
+ 				}),
+ 				expectedSession: nil,
+ 			}),
+@@ -317,7 +317,7 @@ Nnc3a3lGVWFCNUMxQnNJcnJMTWxka1dFaHluYmI4
+ 				authorizationHeader: "Basic ZXlKZm9vYmFyLmV5SmZvb2Jhci4xMjM0NWFzZGY6",
+ 				expectedErr: k8serrors.NewAggregate([]error{
+ 					errors.New("unable to verify bearer token"),
+-					errors.New("oidc: malformed jwt: illegal base64 data at input byte 8"),
++					errors.New("oidc: malformed jwt: oidc: malformed jwt payload: illegal base64 data at input byte 8"),
+ 				}),
+ 				expectedSession: nil,
+ 			}),
